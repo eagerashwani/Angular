@@ -39,3 +39,7 @@
     ```bash
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
     ```
+  - To check Angular is installed successfully in your system
+    ```bash
+    ng v
+    ```
