@@ -43,3 +43,30 @@
     ```bash
     ng v
     ```
+- And VS Code.
+
+## Some Most Used commands
+- Installs Angular CLI globally.
+    ```bash
+    npm install -g @angular/cli
+    ```
+- Creates a new Angular Application
+    ```bash
+    npm new <project_name>
+    ```
+- Build and run application on lite-server and lauches a browser
+    ```bash
+    ng serve --open
+    ```
+- Create a class, component, directive, interface, module, pipe and service
+    ```bash
+    ng generate <name>
+    ```
+- Buils the applications
+    ```bash
+    ng build
+    ```
+- Updates Angular to latest version
+    ```bash
+    ng udpate @angular/cli @angular/core
+    ```
