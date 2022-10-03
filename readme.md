@@ -28,3 +28,10 @@
 ## Why TS for Angular?
 - TS is Microsoft extension for JS which supports object-oriented features and has a strong typing system that enhances productivity.
 - TS code is compiled to JS code using build tools like npm, gulp, webpack etc to make the browser understand the code.
+
+## Local System Setup
+- Install node in your system.
+- And angular cli via below command.
+  ```bash
+  npm install -g @angular/cli
+  ```
