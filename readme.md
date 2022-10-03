@@ -70,3 +70,11 @@
     ```bash
     ng udpate @angular/cli @angular/core
     ```
+
+## Create project
+- Open terminal and paste the command.
+  ```bash
+  ng new FirstAngularApp
+  ```
+  - Than based on your requirement allow routing or not.
+  - Then Hit enter on CSS.
