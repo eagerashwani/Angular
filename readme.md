@@ -78,3 +78,10 @@
   ```
   - Than based on your requirement allow routing or not.
   - Then Hit enter on CSS.
+
+- Open VS code in FirstAngularApp folder.
+- Now, open package.json file
+  - and update thee start in scripts
+  ```bash
+  "start": "ng serve -o",
+  ```
