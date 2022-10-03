@@ -35,3 +35,7 @@
   ```bash
   npm install -g @angular/cli
   ```
+  - In windows OS, also paste this command
+    ```bash
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+    ```
