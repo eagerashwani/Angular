@@ -200,7 +200,7 @@
     setTimeout(() => {
       this.isDisable = false;
     },3000);
-    const colors = ['red', 'cyan', 'orange'];
+    const colors: string[] = ['red', 'cyan', 'orange'];
     this.bgColor = "bg-" + colors[Math.floor(Math.random() * 3)] + "-500";
    }
   ```
@@ -258,6 +258,7 @@
 - Now, hum apne webpage par kuch conditionally data show krna chahte hai
 - Agar ye condition hai to ye kro, ye hai to ye kro
 ### *ngIf
+- It's a structural directive(Dom ka structure change karta hai)
 ```html
  <h2 *ngIf="salary > 25000">Party to banti hai</h2>
 ```
@@ -268,4 +269,28 @@
   <ng-template #lowSal>
       <h2>Phle achi job le le</h2>
   </ng-template>
+  ```
+### *ngFor
+- Hamare pass ek array hai aur wo show krni hai
+- Ek method to ye hai ki, interpolation ka use kr ke, index de do
+- Dusra ngFor
+  ```bash
+   movies:string[] = ['Ironman', 'Batman', 'Thor', 'Captain America'];
+  ```
+  ```bash
+  <ul>
+    <li *ngFor="let f of movies">
+        <h1>{{f}}</h1>
+    </li>
+  </ul>
+  ```
+- Now, I want ki length of array bhi bta aur saath hi index bhi show kr
+  ```bash
+    <ul>
+        <li *ngFor="let f of movies; index as i; count as c; even as e">
+            <h1 *ngIf="e">
+              {{i}} {{f}}
+            </h1>
+        </li>
+    </ul>
   ```
