@@ -253,3 +253,19 @@
     <input type="text" [(ngModel)] = "fullname">
   ```
   - Isko likhne se phle hummey module.ts mey formsModule import krna hoga aur imports array mey dena hoga
+
+## Directives
+- Now, hum apne webpage par kuch conditionally data show krna chahte hai
+- Agar ye condition hai to ye kro, ye hai to ye kro
+### *ngIf
+```html
+ <h2 *ngIf="salary > 25000">Party to banti hai</h2>
+```
+- Agar salary 25000 se jada hogi, to Party to banti hai show hoga, nhi to nhi hoga.
+- But main else wala part bhi chahta hu
+  ```html
+  <h2 *ngIf="salary > 25000; else lowSal">Party to banti hai</h2>
+  <ng-template #lowSal>
+      <h2>Phle achi job le le</h2>
+  </ng-template>
+  ```
