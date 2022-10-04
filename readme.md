@@ -85,3 +85,31 @@
   ```bash
   "start": "ng serve -o",
   ```
+
+## Components
+- Index.html ke andar hume  <app-root></app-root> tag dikh rha hai,
+- Ye tag hai hamara component, Jo ki ek app level component hai
+- Ab hum src/app mey jate hai to wahan .html file hai, usmey ye sara code likha huwa hai
+- Now, change the prebuild code to <h1>Hello World</h1>, and see the changes.
+- Component website ka ek part hai, chota sa hissa hai jaise footer, sidebar, navbar etc
+- Sbse jayda imp file hoti hai app.component.ts wali
+- Ab hum suru se iss file ko bnate hai
+  ```bash
+    class AppComponent{
+      
+    }
+  ```
+- Sbse phle hume ek class bnani hoti hai, ab iss class ko export krna hota taki hum isko import kar ske
+  ```bash
+    export class AppComponent{
+      
+    }
+  ```
+- Jb hum sirf export likhte hai to import k time, hume { } lgane pdte hai
+  ```bash
+    import { AppComponent } from './app.component';
+  ```
+- Agr main **export default** likhta tb mujhe { } ki zarurt nhi hoti, main direct likh deta
+  ```bash
+    import AppComponent from './app.component';
+  ```
