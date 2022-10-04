@@ -154,4 +154,15 @@
   ```
 - {{status * 80}} ye ek expression hai, aur name ke andr hum sbhi string k methods use kr skte hai like toUpperCase() etc.
 - Ab humne ek function bhi define kr diya aur wo bhi html mey show krwa liya, interpolation ki help se.
-- 
+  ```ts
+    getName(){
+    const aka: string = "Ironman";
+    return `I am ${this.myname} aka ${aka}`;
+
+    }
+  ```
+  ```html
+    <h1>{{getName()}}</h1>
+  ```
+
+## Property Binding
