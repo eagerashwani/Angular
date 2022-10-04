@@ -133,5 +133,25 @@
   <div app-root></div>
   ```
 
-## app.module.ts file
+### app.module.ts file
+- @NgModule ek decorator hai, jiske andar declaration mey hum components dete hai(Humko Angular ko btana pdta hai ki ye component main use krna chahte hoon).
+- bootstrap: [AppComponent], yahan bhi AppComponent hai, bootstrap mey hum jo app level component ko uska use krenge
+- Jb hum angular cli ka use kr k component generate krte hai, to automatic declaration k andr add ho jata hai nya component.
+- Nya component bnane ke liye hum ng g c <name> command use krte hai
+
+## Interpolation
+- Ab kuch property define kar lete hai profile.ts mey
+  ```bash
+    name: string = "Ashwani";
+    status: string = "Complicated";
+    salary: number = 20000;
+    age: number = 24;
+  ```
+- Ab main inn properties ko profile.html mey use kar skta hoon.
+- {{}} iss ko khte hai interpolation, ismey hum properties/expression dete hai.
+  ```html
+  <h2>Mera naam {{name}} hai, main {{age}} ka hoon, meri salary {{salary * 80}} itni hai aur love life {{status}} hai</h2>
+  ```
+- {{status * 80}} ye ek expression hai, aur name ke andr hum sbhi string k methods use kr skte hai like toUpperCase() etc.
+- Ab humne ek function bhi define kr diya aur wo bhi html mey show krwa liya, interpolation ki help se.
 - 
