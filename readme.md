@@ -221,3 +221,30 @@
   ```html
     <button class="bg-green-600 text-white px-3 mx-3" (click)="mySalary()">Show salary in INR</button>
   ```
+
+## Two Way Binding
+- Both side communication.
+  ```html
+  <input type="text" [value]="myname" class="my-10"/>
+  <h2>{{myname}}</h2>
+  ```
+- input field mey myname ki value show ho rhi h
+- But main chahta hoon ki input field mey jo likhu wo h2 mey show ho jaye
+- Event binding ko use krenge
+  ```html
+  <input type="text" [value]="myname" class="my-10" (input)="getMyInput($event)" />
+  ```
+  - (input) : ye hai hamara event.
+  - getMyInput() : ye hai function
+  - $event : hum ye event pass kar rhe hai, function ke andr
+
+  ```ts
+    getMyInput(e:any){
+      console.log(e.target.value);
+      // jaise hi kuch likhna start kiya input field mey, to har letter new line mey console mey print hota rhega
+
+      this.myname = e.target.value;
+      // ab h2 mey live update hota rhega
+
+      }   
+  ```
