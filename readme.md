@@ -248,3 +248,8 @@
 
       }   
   ```
+- Hum function na de kar, direct event.target.value de skte they kyuki ek hi line ka code tha
+  ```html
+    <input type="text" [(ngModel)] = "fullname">
+  ```
+  - Isko likhne se phle hummey module.ts mey formsModule import krna hoga aur imports array mey dena hoga
