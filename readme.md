@@ -114,7 +114,7 @@
     import AppComponent from './app.component';
   ```
 - Iss class ke andar hum likhte hai logical code, property, function etc.
-- Sirf class bnane se hmara component nhi banta, hume ek decorator bhi chahiye
+- Sirf class bnane se hmara component nhi banta, hume ek decorator(@Component iss case mey, jo ki ek object leta hai) bhi chahiye
   ```bash
   import { Component } from '@angular/core';
 
@@ -125,5 +125,13 @@
   })
 
   ```
-- templateUrl mey hum file dete hai, template mey `` ke andar inline html code likhte hai, aisa same style k saath hum inline CSS likhte hai.
+- templateUrl mey hum file dete hai, template mey `` ke andar inline html code likhte hai, aisa same styles k saath hum inline CSS likhte hai.
+- Ab humne iss component ko ek naam bhi dena hai, wo hum selector ka use kr k dete hai, jo selector ki value hogi usi ko hum html tag ki trh use kar skte hai.
+- agar hum selector ko .app-root likh de, to index.html mey hume div ko app-root as class dena hoga.
+- agr hum [app-root] likhte hai selector mey, to hume attribute dena hoga
+  ```bash
+  <div app-root></div>
+  ```
+
+## app.module.ts file
 - 
