@@ -166,3 +166,58 @@
   ```
 
 ## Property Binding
+- Ab ek button bnate hai
+- Maine tailwind css install kr li hai
+  ```html
+    <button class="bg-slate-900 text-white">click me</button>
+  ```
+- Ab main button ka color red krna chahta hoon, wo bhi ek property define kr k, btnRed : string = "bg-red-500";
+- Ab class ko [] k andr likhenge, agr hume ts code use krna hai to.
+  ```html
+  <button [class]="btnRed">click me</button>
+  ```
+  ```ts
+   btnRed : string = "bg-red-500 text-white";
+  ```
+- Ab main ek random color generator banana chahta hu, apne button ke liye
+  ```ts
+    bgColor : string;
+
+    constructor() {
+      const colors = ['red', 'cyan', 'orange'];
+      this.bgColor = "bg-" + colors[Math.floor(Math.random() * 3)] + "-500";
+    }
+  ```
+  ```html
+    <button [class]="bgColor">click me</button>
+  ```
+- Error, agar phle color change kr diya to shi chalta hai, nhi to nhi chalta
+- Ab main button ko enable krna chahta hu, 3 sec baad
+  ```ts
+   isDisable : boolean = true;
+
+  constructor() {
+    setTimeout(() => {
+      this.isDisable = false;
+    },3000);
+    const colors = ['red', 'cyan', 'orange'];
+    this.bgColor = "bg-" + colors[Math.floor(Math.random() * 3)] + "-500";
+   }
+  ```
+  ```html
+    <button [class]="bgColor" [disabled]="isDisable">click me</button>
+  ```
+- Error, button is disable for 3 sec but color remains on button.
+
+### Event Binding
+- In html, all events are start with on like : onclick, ondbclick etc
+- but in angular, remove on
+- and put event in () like : (click)
+  ```ts
+    mySalary(){
+       alert(this.salary * 80);
+    }
+  ```
+  ```html
+    <button class="bg-green-600 text-white px-3 mx-3" (click)="mySalary()">Show salary in INR</button>
+  ```
