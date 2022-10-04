@@ -113,3 +113,17 @@
   ```bash
     import AppComponent from './app.component';
   ```
+- Iss class ke andar hum likhte hai logical code, property, function etc.
+- Sirf class bnane se hmara component nhi banta, hume ek decorator bhi chahiye
+  ```bash
+  import { Component } from '@angular/core';
+
+  @Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+  })
+
+  ```
+- templateUrl mey hum file dete hai, template mey `` ke andar inline html code likhte hai, aisa same style k saath hum inline CSS likhte hai.
+- 
