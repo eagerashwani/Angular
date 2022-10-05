@@ -399,7 +399,9 @@
   <img src="{{img}}" alt="" width="200px" />
 <h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
 - users.ts
-  import { Component, Input } from '@angular/core';
+
+
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-users',
@@ -413,3 +415,27 @@ export class UsersComponent  {
   @Input() img !:string;
 }
 
+- As you saw, we use same code many times in app.html, we can use ngFor 
+  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession" [img]="user.imgPath"></app-users>
+
+## Child to parent communication
+- Sbse phle 2 cheeze import krni pdengi, Output and EventEmitter (child mey)
+- aur variable bnana pdega Outuput decorator aur eventEmitter k saath
+- aur ek function jo data send krega
+    @Output() myevent = new EventEmitter<string>();
+
+  passData(){
+    this.myevent.emit("Ashwani will be the richest man in the world");
+  }
+- ab iss function ko dena hai parent ko 
+  <button class="bg-indigo-500" (click)="passData()">pass data to parent</button>
+
+- Ab hume Parent ko event dena hai
+  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
+    [img]="user.imgPath" (myevent)="recieveData($event)"></app-users>
+
+- app.ts
+   recieveData(e:any){
+    console.log(e);
+
+  }
