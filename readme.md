@@ -439,3 +439,52 @@ export class UsersComponent  {
     console.log(e);
 
   }
+
+## User Model
+- hum users ke andar jo mnn chahe daal de rhe hai, but ye recommended nhi hai
+    users = [
+    {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
+    {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
+  ];
+- hume phle apna khud ka data type banana chahiye users ke liye
+- src folder mey ek nya folder models ke naam se bna lenge aur uske andr ek file user.ts
+  export interface User{
+    name:string;
+    hobby:string;
+    profession:string;
+    imgPath:string;
+}
+
+- Ab app.ts 
+  users: Array<User> = [
+    {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
+    {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
+  ];
+
+- Ab hum inn 4 property k alwa kuch nhi de skte
+
+## Content Projection
+- When we pass data from parent to child its raw data (user.hobby etc)
+- now, i want to pass html code
+- Add your html code in b/w tag <app-users>Here</app-users>
+  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
+    [img]="user.imgPath" (myevent)="recieveData($event)">
+    <h2>Hello buddy</h2>
+</app-users>
+
+- In user.html add
+  <ng-content></ng-content>
+
+- Suppose we have to pass more elements than...
+  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
+    [img]="user.imgPath" (myevent)="recieveData($event)">
+    <h2>Hello buddy</h2>
+    <h3>Bye buddy</h3>
+  </app-users>
+
+- user.html
+  <ng-content select="h2"></ng-content>
+  <img src="{{img}}" alt="" width="200px" />
+  <h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
+  <button class="bg-indigo-500" (click)="passData()">pass data to parent</button>
+  <ng-content select="h3"></ng-content>
