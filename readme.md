@@ -332,3 +332,15 @@
 - html
   <input type="date" [(ngModel)]="myDate" />
   {{myDate | date : 'medium' }}
+
+## Parent to child component @Input()
+### Component resue
+- just add multiple times your component tag
+  ```bash
+  <app-users></app-users>
+  <app-users></app-users>
+  <app-users></app-users>
+  ```
+- Hm chahte hai ki, jo data hum app-users tag ko de wo reflect ho, dynamic banana chahte hai
+- To phle tag property leta ho
+- Aur wo property tag ki ts file mey bhi ho
