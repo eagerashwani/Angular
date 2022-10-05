@@ -284,7 +284,7 @@
     </li>
   </ul>
   ```
-- Now, I want ki length of array bhi bta aur saath hi index bhi show kr
+- Now, I want ki length of array bhi bta aur saath hi index bhi show kro jb even index ho
   ```bash
     <ul>
         <li *ngFor="let f of movies; index as i; count as c; even as e">
@@ -294,3 +294,41 @@
         </li>
     </ul>
   ```
+### ngClass
+  ```bash
+    <ul>
+        <li *ngFor="let f of movies; index as i; count as c; even as e" [class]="e? 'bg-red-500' : 'bg-cyan-500'">
+            <h1>
+              {{i}} {{f}}
+            </h1>
+        </li>
+    </ul>
+  ```
+- Above example works fine, lets look ngClass
+```html
+<ul>
+    <li *ngFor="let f of movies; index as i; count as c; even as e" [ngClass]="{'bg-red-500': e, 'bg-cyan-500':!e}">
+        <h1>
+          {{i}} {{f}}
+        </h1>
+    </li>
+</ul>
+```
+- ngClass works with array, string, object, classes and expression
+
+## Pipes
+### TitleCasePipe
+```html
+  <h2>{{myname | titlecase}}</h2>
+```
+- myname is in lower case but when we use pipe | with titlecase it become Ashwani Kumar
+
+### CurrencyPipe
+- {{salary * 80 | currency:'INR'}}
+
+### DatePipe
+- ts
+  myDate! : Date;
+- html
+  <input type="date" [(ngModel)]="myDate" />
+  {{myDate | date : 'medium' }}
