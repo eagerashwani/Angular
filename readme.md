@@ -588,3 +588,30 @@ export class UsersComponent  {
         }
     ```
     - Now, I want to change bgColor on hover and remove color when mouse leave
+  
+## Custom Pipes
+- Hum pipes ka use content ko format krne ke liye karte hai
+- Hmare pass mobile number hai, us ke samne country code lgana hai
+  ```ts
+  import { Pipe, PipeTransform } from '@angular/core';
+
+  @Pipe({
+    name: 'countrycode'
+  })
+  export class CountrycodePipe implements PipeTransform {
+    // iss value ke andr hmara phoneNo receive ho rha hai
+    transform(value: unknown, ...args: unknown[]): unknown {
+      return "+91" + value;
+    }
+
+  }
+
+  ```
+  - ab main country ka naam dena chahta hoon like USA
+   ```ts
+     // iss value ke andr hmara phoneNo receive ho rha hai
+      transform(value: unknown, ...args: unknown[]): unknown {
+        if(args[0]==="USA") return '+1' + value;
+        else return "+91" + value;
+      }
+   ```
