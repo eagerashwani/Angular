@@ -650,11 +650,37 @@ export class UsersComponent  {
 
     fetchData(){
       this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data:any)=>{
-        console.log(data);
-        this.userName = data[2].username;
+        //console.log(data);
+        this.userName = data.value;
       });
       //above line return an observable before subscribe
     }
 
     }
   ```
+
+- The code we write is not the recommended approach
+- Jab bhi app mey data(network) se related kaam krte hai to hmme services ka use krna chahiye
+  
+## Services
+- ng g s services/joke
+  ```ts
+  import { Injectable } from '@angular/core';
+
+    @Injectable({
+      providedIn: 'root'
+      // iska mtlb ki hum iss service ko puri application mey khin bhi use kar skte hai
+    })
+    export class JokeService {
+
+      constructor(private http:HttpClient) { }
+
+      getJoke(){
+        return this.http.get('https://api.chucknorris.io/jokes/random?category=dev');
+      }
+    }
+
+  ```
+  - Now, our service is ready
+
+- Lets inject this service in our component
