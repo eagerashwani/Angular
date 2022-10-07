@@ -615,3 +615,46 @@ export class UsersComponent  {
         else return "+91" + value;
       }
    ```
+
+## HttpClient
+- lets learn about how we call network in our Angular App
+- Import HttpClientModule in module.ts
+  ```ts
+  constructor(private http:HttpClient) { }
+  ```
+  - This is called Dependency Injection
+- Create a function to fetch the data
+  ```ts
+   fetchData(){
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(data=>{
+    //  console.log(data);
+
+    });
+    //above line return an observable before subscribe
+  }
+  ```
+  ```html
+  <button class="bg-purple-600 mx-20 my-20 px-10 py-10 text-white text-lg" (click)="fetchData()">Fetch Data</button>
+
+  ```
+  - updated ts
+  ```ts
+    export class HttpClientComponent implements OnInit {
+    userName:string = 'user';
+
+    constructor(private http:HttpClient) { }
+
+    ngOnInit(): void {
+      this.fetchData()
+    }
+
+    fetchData(){
+      this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data:any)=>{
+        console.log(data);
+        this.userName = data[2].username;
+      });
+      //above line return an observable before subscribe
+    }
+
+    }
+  ```
