@@ -541,3 +541,50 @@ export class UsersComponent  {
 - jab component delete hone wala hota hai, to hum iss method ki help se memory ko free kar skte hai
   
 ## Custom Directive
+- ng g d <directives/highlight>
+- In highlight.dir.ts file  selector: '[appHighlight]'
+- You know why we use [ ] 
+- Now main chahta hu ki background color change ho appHighlight directive se
+- Sbse phle hum uss element ko access krenge jisko directive diya hai with help of ElementRef type
+- users.html
+  <div class="mx-40 my-20 border-spacing-4" appHighlight>
+- highlight.directive.ts
+  import { Directive, ElementRef } from '@angular/core';
+
+  @Directive({
+    selector: '[appHighlight]'
+  })
+  export class HighlightDirective {
+
+    constructor(el:ElementRef) { 
+      el.nativeElement.style.backgroundColor = "pink";
+    }
+
+  }
+  - el ko hum abhi sirf constructor k andr use kr pa rhe
+  - sirf private likhne se hum usko puri class mey use kar skte hai
+  ```ts
+        export class HighlightDirective {
+
+          constructor(private el:ElementRef) { 
+          }
+          
+          ngOnInit(){
+            this.el.nativeElement.style.backgroundColor = "pink";
+
+          }
+
+        }
+
+  ```
+  - this is recommended approach (Make constructor simple)
+  - We can also use @HostBinding
+    ```ts
+      @HostBinding('style.backgroundColor') bgColor: any;
+      ngOnInit(){
+          // this.el.nativeElement.style.backgroundColor = "pink";
+          this.bgColor = 'pink';
+
+        }
+    ```
+    - Now, I want to change bgColor on hover and remove color when mouse leave
