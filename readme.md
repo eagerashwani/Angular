@@ -488,3 +488,56 @@ export class UsersComponent  {
   <h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
   <button class="bg-indigo-500" (click)="passData()">pass data to parent</button>
   <ng-content select="h3"></ng-content>
+   - hum classes, id bhi select mey de skte hai
+
+- Hum two way data binding bhi use kr skte hai
+  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
+    [img]="user.imgPath" (myevent)="recieveData($event)">
+    <h2>Hello buddy</h2>
+    <br><br>
+    <input type="text" [(ngModel)] = "title">
+    {{title}}
+    <br><br>
+    <h3>Bye buddy</h3>
+</app-users>
+  - Error, input field aa hi nhi rha
+
+## Lifecycle hooks
+- Jo bhi Lifecycles method hote hai unko hum call nhi karte Angular call krta hai
+- Sbse phle hmme interface import krna hota hai lifecycle method ka aur phir implement krna hota h
+### ngOnInit
+- We use ngOnInit to initialize
+- Whats the diff b/w constructor and ngoninit ?
+- both methods call only once (constructor and ngoninit)
+- Jab class ka instance banta hai tb constructor call hota hai
+- Jab component banne wala hota hai tb ngonint call hota h
+- app.ts
+  ```ts
+    constructor(){
+      console.log('constructor', this.myname);  // op undefined
+      // we can define properties here
+    }
+    
+    ngOnInit(): void {
+      console.log('ngOnInit', this.myname); // op shows name
+      // we can define
+      // properties
+      // event listner register
+      // initial data fetch 
+      
+    }
+  ```
+- Ek aur method hota hai jo constructor aur ngoninit ke bech mey aata hai
+- Agr hum implement na bhi kre tb bhi koi issue nhi aata, but ye good practice nhi hai
+### ngOnChanges
+- ye method constructor ke baad aur ngoninit se phle call hota hai
+- iske pass @Input ka access hota hai or jab bhi input change hota hai ye dubara se call hota hai
+```ts
+ ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+```
+### ngOnDestroy
+- jab component delete hone wala hota hai, to hum iss method ki help se memory ko free kar skte hai
+  
+## Custom Directive
