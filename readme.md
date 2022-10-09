@@ -791,3 +791,66 @@ export class UsersComponent  {
 - we create two new components login and register
 - First import the ReactiveFormsModule in app.module.ts from @angular/forms for reactive forms and formsModule for template forms.
 - Now, import formGroup, formControl and Validators in login.ts from @angular/forms
+  ```ts
+  // email is property
+  // formControl takes two values, 1 is intial value and 2 is array of validators
+     email = new FormControl("",[
+      Validators.required,
+      Validators.email
+    ])
+    password = new FormControl("",[
+      Validators.required,
+      Validators.minLength(6)
+    ])
+
+    login(){
+      console.log(this.email.value, this.password.value)
+    }
+
+  ```
+  ```html
+  <h1>Login Reactive Form</h1>
+  <form class="mx-12 my-12">
+    <input type="email" [formControl]="email" />
+    <!-- we use hidden not ngif because ngif rebuild dom while hidden just show or not -->
+    <h2 class="text-red-500" [hidden]="email.valid || email.untouched">Enter correct email</h2>
+    <br><br>
+    <input type="password" [formControl]="password" />
+    <h2 class="text-red-500" [hidden]="password.valid || password.untouched">Enter correct password min length 6</h2>
+    <br><br>
+    <button class="px-8 py-3 text-white bg-blue-600 rounded " (click)="login()">login</button>
+  
+
+
+  </form>
+  <h1>email {{email.value}}</h1>
+  <h1>email valid {{email.valid}}</h1>
+  <h1>email untouched {{email.untouched}}</h1>
+  ```
+- We can able to submit emial and password when they showing error
+- So, to overcome this issue we can disable the button till all conditions satisfied
+  ```ts
+   loginForm = new FormGroup({
+    email : this.email,
+    password : this.password
+    })
+
+    login(){
+      console.log(this.loginForm.value)
+    }
+
+  ```
+  ```html
+  <h1>Login Reactive Form</h1>
+  <form class="mx-12 my-12" [formGroup]="loginForm">
+    <input type="email" [formControl]="email" />
+    <!-- we use hidden not ngif because ngif rebuild dom while hidden just show or not -->
+    <h2 class="text-red-500" [hidden]="email.valid || email.untouched">Enter correct email</h2>
+    <br><br>
+    <input type="password" [formControl]="password" />
+    <h2 class="text-red-500" [hidden]="password.valid || password.untouched">Enter correct password min length 6</h2>
+    <br><br>
+    <button class="px-8 py-3 text-white bg-blue-600 rounded " [disabled]="loginForm.invalid" (click)="login()">login</button>
+  </form>
+
+  ```
