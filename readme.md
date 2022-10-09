@@ -684,3 +684,110 @@ export class UsersComponent  {
   - Now, our service is ready
 
 - Lets inject this service in our component
+- http-client.ts component
+  ```ts
+  import { Component, OnInit } from '@angular/core';
+  import { JokeService } from '../services/joke.service';
+
+  @Component({
+    selector: 'app-http-client',
+    templateUrl: './http-client.component.html',
+    styleUrls: ['./http-client.component.css']
+  })
+  export class HttpClientComponent implements OnInit {
+    joke:string = 'joke';
+
+    constructor(private jokeService:JokeService) { }
+
+    ngOnInit(): void {
+      // this.fetchData()
+      this.fetchJoke();
+    }
+
+    fetchJoke(){
+      this.jokeService.getJoke().subscribe((data:any)=>{
+        this.joke = data.value;
+      })
+
+    }
+
+    // fetchData(){
+    //   this.http.get('https://api.chucknorris.io/jokes/random?category=dev').subscribe((data:any)=>{
+    //     console.log(data);
+    //     this.joke = data.value;
+    //   });
+    //   //above line return an observable before subscribe
+    // }
+
+  }
+
+  ```
+## State management using services
+- So lets create some components comp-a,b,b2
+- Lets create a service called counter
+- counter.service.ts
+  ```ts
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CounterService {
+    private counter:number = 0;
+
+    constructor() { }
+
+    getCounter(){
+      return this.counter;
+    }
+
+    updateCounter(){
+      this.counter = this.counter + 1;
+    }
+  }
+
+  ```
+- Both component A and B have same code
+  ```ts
+  import { Component, OnInit } from '@angular/core';
+  import { CounterService } from '../services/counter.service';
+
+  @Component({
+    selector: 'app-comp-a',
+    templateUrl: './comp-a.component.html',
+    styleUrls: ['./comp-a.component.css']
+  })
+  export class CompAComponent implements OnInit {
+
+    constructor(private counterService:CounterService) { }
+
+    ngOnInit(): void {
+
+    }
+
+    showCounter(){
+      this.counterService.getCounter();
+    }
+
+    updateCounter(){
+      this.counterService.updateCounter();
+    }
+
+  }
+
+  ```
+  ```html
+  <p>Component A - Counter {{showCounter()}} </p>
+  <h1>{{showCounter()}}</h1>
+  <button class="bg-indigo-500" (click)="updateCounter()">Update Counter</button>
+
+  ```
+  -Error, Don't know why {{showCounter()}} not showing, but console works fine
+  - We have same code and same service in both component, so when you update any component's button changes reflect in another component also. 
+
+
+## Reactive(Model Driven) Forms
+- In reactive form, most of the code write in ts file and in template driven form most of the code in template(html)
+- we create two new components login and register
+- First import the ReactiveFormsModule in app.module.ts from @angular/forms for reactive forms and formsModule for template forms.
+- Now, import formGroup, formControl and Validators in login.ts from @angular/forms
