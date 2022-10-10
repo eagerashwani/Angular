@@ -856,7 +856,37 @@ export class UsersComponent  {
   ```
 
 ## Routing and Navigation
-hrllkijvkncvnsjnvkjsbnvkjxcvjxc,jvxcnv ,ncx v
-vkjjhzxjbvx
-vknsdjnvsm
-svdnasjvkjs
+- When you build app code there you can selecting routing to yes
+- Than add AppRotingModule in app.module.ts
+- And insure this tag  <base href="/"> is present in your index.html
+- We can't show hardcoded login form in our body, we have to use router-outlet tag
+- Add your components jinka navigation krna hai
+  ```ts
+    const routes: Routes = [
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'user', component: UsersComponent},
+    {path: 'profile', component: ProfileComponent}
+  ]; 
+
+  ```
+- Hum url mey /login, /user kr k ja to rhe hai, but hmme navbar se jana hai
+- replace href with routerLink
+  ```html
+    <a routerLink="login">Login</a>
+    <a routerLink="register">Register</a>
+    <a routerLink="user">User</a>
+    <a routerLink="profile">Profile</a>
+  ```
+- for default path
+    {path: '', redirectTo: '/login', pathMatch:"full"},
+- for unknown page, isko hmeesha end mey rkhna (Most important)
+    {path: '**', component: NotfoundComponent},
+
+- When a user register, i want to automatically navigate to home page
+- first Inject router in constructor as private from Router
+- In the function of that button
+  this.router.navigate(['/login'])
+
+  
+## Route Params
