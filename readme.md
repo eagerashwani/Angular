@@ -525,15 +525,17 @@
    - hum classes, id bhi select mey de skte hai
 
 - Hum two way data binding bhi use kr skte hai
-  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
-    [img]="user.imgPath" (myevent)="recieveData($event)">
-    <h2>Hello buddy</h2>
-    <br><br>
-    <input type="text" [(ngModel)] = "title">
-    {{title}}
-    <br><br>
-    <h3>Bye buddy</h3>
-</app-users>
+  ```
+    <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
+      [img]="user.imgPath" (myevent)="recieveData($event)">
+      <h2>Hello buddy</h2>
+      <br><br>
+      <input type="text" [(ngModel)] = "title">
+      {{title}}
+      <br><br>
+      <h3>Bye buddy</h3>
+    </app-users>
+  ```
   - Error, input field aa hi nhi rha
 
 ## Lifecycle hooks
