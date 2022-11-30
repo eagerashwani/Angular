@@ -438,44 +438,56 @@
 - Sbse phle 2 cheeze import krni pdengi, Output and EventEmitter (child mey)
 - aur variable bnana pdega Outuput decorator aur eventEmitter k saath
 - aur ek function jo data send krega
+  ```
     @Output() myevent = new EventEmitter<string>();
 
-  passData(){
-    this.myevent.emit("Ashwani will be the richest man in the world");
-  }
+    passData(){
+      this.myevent.emit("Ashwani will be the richest man in the world");
+    }
+  ```
 - ab iss function ko dena hai parent ko 
-  <button class="bg-indigo-500" (click)="passData()">pass data to parent</button>
+  `<button class="bg-indigo-500" (click)="passData()">pass data to parent</button>`
 
 - Ab hume Parent ko event dena hai
-  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
-    [img]="user.imgPath" (myevent)="recieveData($event)"></app-users>
+  ```
+    <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession"
+      [img]="user.imgPath" (myevent)="recieveData($event)"></app-users>
+  ```
 
 - app.ts
-   recieveData(e:any){
-    console.log(e);
+  ```
+    recieveData(e:any){
+      console.log(e);
 
-  }
+    }
+  ```
 
 ## User Model
 - hum users ke andar jo mnn chahe daal de rhe hai, but ye recommended nhi hai
-    users = [
-    {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
-    {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
-  ];
+  ```
+      users = [
+      {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
+      {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
+    ];
+  ```
 - hume phle apna khud ka data type banana chahiye users ke liye
 - src folder mey ek nya folder models ke naam se bna lenge aur uske andr ek file user.ts
-  export interface User{
-    name:string;
-    hobby:string;
-    profession:string;
-    imgPath:string;
-}
+  ```
+      export interface User{
+        name:string;
+        hobby:string;
+        profession:string;
+        imgPath:string;
+    }
+```
 
 - Ab app.ts 
-  users: Array<User> = [
-    {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
-    {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
-  ];
+  ```
+    users: Array<User> = [
+      {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
+      {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
+    ];
+  ```
 
 - Ab hum inn 4 property k alwa kuch nhi de skte
 
