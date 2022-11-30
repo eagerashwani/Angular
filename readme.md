@@ -345,9 +345,11 @@
 - To phle tag property leta ho
 - Aur wo property tag ki ts file mey bhi ho
 - app.component.html (Parent)
+  ```
   <app-users myname="Parnika"></app-users>
   <app-users></app-users>
   <app-users></app-users>
+  ```
 - user.ts
   import { Component, Input } from '@angular/core';
 
