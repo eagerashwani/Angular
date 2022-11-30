@@ -479,7 +479,7 @@
         profession:string;
         imgPath:string;
     }
-```
+  ```
 
 - Ab app.ts 
   ```
