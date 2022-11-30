@@ -351,6 +351,7 @@
   <app-users></app-users>
   ```
 - user.ts
+  ```
   import { Component, Input } from '@angular/core';
 
   @Component({
@@ -361,14 +362,18 @@
   export class UsersComponent  {
     @Input() myname!:string;
   }
+  ```
 - Import input and use input decorator inside class.
 - Lets define some more properties
 - app.ts
+  ```
   <app-users myname="Parnika" hobby="Travelling" profession="Teacher"></app-users>
   <app-users myname="Somi" hobby="Travelling" profession="Singer"></app-users>
+  ```
 - users.html
-  <h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
+  `<h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>`
 - users.ts
+  ```
   import { Component, Input } from '@angular/core';
 
   @Component({
@@ -381,44 +386,53 @@
     @Input() hobby !: string;
     @Input() profession !: string;
   }
+  ```
 - Make data also dynamic
 - app.ts
+  ```
    users = [
     {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer'},
     {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher'},
   ]
+  ```
 - Now, lets add images also
 - I add images to assets folder
 - app.ts
+  ```
   users = [
     {name : 'Ashwani', hobby : 'Watching Movies', profession : 'Engineer', imgPath : 'assets/ashwani.png'},
     {name : 'Parnika', hobby : 'Travelling', profession : 'Teacher', imgPath: 'assets/parnika.png'},
   ]
+  ```
 - app.html
+  ```
   <app-users [myname]="users[0].name" [hobby]="users[0].hobby" [profession]="users[0].profession" [img]="users[0].imgPath"></app-users>
 <app-users [myname]="users[1].name" [hobby]="users[1].hobby" [profession]="users[1].profession" [img]="users[1].imgPath"></app-users>
+```
 - users.html
+  ```
   <img src="{{img}}" alt="" width="200px" />
 <h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
+  ```
 - users.ts
+  ```
+  import { Component, Input } from '@angular/core';
 
+  @Component({
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrls: ['./users.component.css']
+  })
+  export class UsersComponent  {
+    @Input() myname!:string;
+    @Input() hobby !: string;
+    @Input() profession !: string;
+    @Input() img !:string;
+  }
+  ```
 
-import { Component, Input } from '@angular/core';
-
-@Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
-})
-export class UsersComponent  {
-  @Input() myname!:string;
-  @Input() hobby !: string;
-  @Input() profession !: string;
-  @Input() img !:string;
-}
-
-- As you saw, we use same code many times in app.html, we can use ngFor 
-  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession" [img]="user.imgPath"></app-users>
+- As you saw, we use same code many times in app.html, we can use `ngFor 
+  <app-users *ngFor="let user of users" [myname]="user.name" [hobby]="user.hobby" [profession]="user.profession" [img]="user.imgPath"></app-users>`
 
 ## Child to parent communication
 - Sbse phle 2 cheeze import krni pdengi, Output and EventEmitter (child mey)
