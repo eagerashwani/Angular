@@ -406,29 +406,29 @@
   ```
 - app.html
   ```
-  <app-users [myname]="users[0].name" [hobby]="users[0].hobby" [profession]="users[0].profession" [img]="users[0].imgPath"></app-users>
-<app-users [myname]="users[1].name" [hobby]="users[1].hobby" [profession]="users[1].profession" [img]="users[1].imgPath"></app-users>
-```
+    <app-users [myname]="users[0].name" [hobby]="users[0].hobby" [profession]="users[0].profession" [img]="users[0].imgPath"></app-users>
+    <app-users [myname]="users[1].name" [hobby]="users[1].hobby" [profession]="users[1].profession" [img]="users[1].imgPath"></app-users>
+  ```
 - users.html
   ```
-  <img src="{{img}}" alt="" width="200px" />
-<h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
+    <img src="{{img}}" alt="" width="200px" />
+    <h1>{{myname}} and my hobby is {{hobby}} and my profession is {{profession}}</h1>
   ```
 - users.ts
   ```
-  import { Component, Input } from '@angular/core';
+    import { Component, Input } from '@angular/core';
 
-  @Component({
-    selector: 'app-users',
-    templateUrl: './users.component.html',
-    styleUrls: ['./users.component.css']
-  })
-  export class UsersComponent  {
-    @Input() myname!:string;
-    @Input() hobby !: string;
-    @Input() profession !: string;
-    @Input() img !:string;
-  }
+    @Component({
+      selector: 'app-users',
+      templateUrl: './users.component.html',
+      styleUrls: ['./users.component.css']
+    })
+    export class UsersComponent  {
+      @Input() myname!:string;
+      @Input() hobby !: string;
+      @Input() profession !: string;
+      @Input() img !:string;
+    }
   ```
 
 - As you saw, we use same code many times in app.html, we can use `ngFor 
